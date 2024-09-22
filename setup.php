@@ -173,14 +173,14 @@ if (!defined("__CA_GOOGLE_MAPS_KEY__")) {
 # additional software be present on your server, and in general all will provide 
 # better performance than file-based caching.
 
-# Options are: 'file', 'memcached', 'redis', 'apc' and 'sqlite'
+# Options are: 'file', 'memcached', 'Redis', 'apc' and 'sqlite'
 # memcached, redis and apc require PHP extensions that are not
 # part of the standard CollectiveAccess configuration check. If you do
 # configure them here and your PHP installation doesn't have the required extension you
 # may see critical errors. sqlite requires the PHP PDO extension and a working install
 # of sqlite. This is not guaranteed to be present on your server, but often is.
 if (!defined('__CA_CACHE_BACKEND__')) { 
-	define('__CA_CACHE_BACKEND__', 'file');
+	define('__CA_CACHE_BACKEND__', 'Redis');
 }
 
 # Options for the caching back-ends you may wish to set include:
@@ -215,7 +215,7 @@ if (!defined('__CA_ALLOW_INSTALLER_TO_OVERWRITE_EXISTING_INSTALLS__')) {
 # For production use you should set this to false. Note that exceptions are always
 # logged to the application log in app/log, regardless of what is set here.
 if (!defined('__CA_STACKTRACE_ON_EXCEPTION__')) {
-	define('__CA_STACKTRACE_ON_EXCEPTION__', false);
+	define('__CA_STACKTRACE_ON_EXCEPTION__', true);
 }
 
 require(__DIR__."/app/helpers/post-setup.php");
